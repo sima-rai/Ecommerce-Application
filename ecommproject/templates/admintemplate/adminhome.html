@@ -1,0 +1,40 @@
+{% extends 'admintemplate/adminbase.html'%}
+{% block title %} {% endblock %}
+{% block content %}
+
+<div class="container">
+<h4>Pending Orders</h4> <hr>
+<table class="table">
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th>Customer</th>
+            <th>Order ID</th>
+            <th>Ordered On</th>
+            <th>Amount</th>
+            <th>Status</th>
+
+
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for i in pending %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.cart.customer}}</td>
+            <td> <a href="{% url 'ecomapp:adminorderdetail' i.id %}">#order_{{i.id}}</a></td>
+            <td>{{i.created_at}}</td>
+            <td>{{i.total}}</td>
+            <td>{{i.order_status}}</td>
+
+
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
